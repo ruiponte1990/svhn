@@ -1,0 +1,32 @@
+{
+    "mysql_config": {
+    "user": "root",
+    "password": "password",
+    "host": "127.0.0.1",
+    "database": "svhn",
+    "raise_on_warnings": false
+  },
+  "table_cols": {
+    "filename": "char(15)",
+    "boxNo": "int",
+    "label": "double",
+    "width_val": "double",
+    "top_val": "double",
+    "left_val": "double",
+    "height_val": "double"
+  },
+  "env_cfg": {
+    "train_table": "train",
+    "train_data": "../data/train",
+    "train_path": "../data/train.json",
+    "test_table": "test",
+    "test_data": "../data/test",
+    "test_path": "../data/test.json",
+    "valid_table": "valid",
+    "valid_data": "../data/valid",
+    "valid_path": "../data/valid.json",
+    "log_dir": "./log",
+    "log_format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "model_dir": "./model"
+  }
+}
