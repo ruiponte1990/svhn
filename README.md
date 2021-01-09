@@ -9,21 +9,3 @@ After setting up the directory structure and creating a MySQL db named "svhn", r
 To train the classifier run "runExperimentsTwo.py".
 
 For more information on how to set up the directory structure look in the "cfg.json" file. 
-
-
-For some resources on CNN's:
-
-http://www.jessicayung.com/explaining-tensorflow-code-for-a-convolutional-neural-network/
-
-http://cs231n.github.io/convolutional-networks/#layers
-
-https://arxiv.org/pdf/1603.07285v1.pdf
-
-
-'SAME' padding and the intuition behind the architecture and weight shapes:
-
-https://stackoverflow.com/questions/48491728/what-is-the-behavior-of-same-padding-when-stride-is-greater-than-1
-
-https://www.tensorflow.org/api_guides/python/nn#Convolution
-
-https://stackoverflow.com/questions/46465925/input-to-reshape-is-a-tensor-with-37632-values-but-the-requested-shape-has-1505/52240509#52240509
