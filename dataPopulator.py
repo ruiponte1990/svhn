@@ -19,7 +19,7 @@ class DatabasePopulator(object):
         self.db = pymysql.connect(host=host, port=3306, user=user, passwd=passwd, db=db)
         self.cursor = self.db.cursor()
         logging.basicConfig(
-            level= logging.INFO,
+            level= logging.ERROR,
             filename=os.path.join(self.env_cfg.get('log_dir'), 'log.log'),
             format=self.env_cfg.get('log_format')
         )

@@ -1,6 +1,6 @@
 This repo contains code for loading image data into a MySQL database, reading data from the database and running a CNN classifier on the data. 
 
-All code should be in a directory called "code", whereas all the image data belongs in "data". The data directory is then split into "test", "train" and "valid" subdirectories. The .json metadata files stay in the top level directory, but the image files must be placed in the appropriate subdirectories. 
+All the image data belongs in "data". The data directory is then split into "test", "train" and "valid" subdirectories. 
 
 The data is found at http://ufldl.stanford.edu/housenumbers/. The .mat files with the metadata must be extracted to .json format using the "svhn_dataextract_tojson.py" file. I decided to use the "extra" images as training data, and the "train" images as validation data. 
 
