@@ -21,7 +21,7 @@ class Dataloader(object):
         self.db = pymysql.connect(host='localhost', port=3306, user='root', passwd='password', db='svhn')
         self.cursor = self.db.cursor()
         logging.basicConfig(
-            level= logging.INFO,
+            level= logging.ERROR,
             filename=os.path.join(self.env_cfg.get('log_dir'), 'log.log'),
             format=self.env_cfg.get('log_format')
         )
@@ -36,8 +36,13 @@ class Dataloader(object):
         df = pd.DataFrame(results, columns=self.cols.keys())
         return df
 
+    def load_label(self, filename, tablename):
+        cmd = "SELECT \'label\' from {} WHERE filename = \'{}\';".format(tablename, filename)
+        self.cursor.execute(cmd)
+        return self.cursor.fetchall()
+
     def load_raw_pixels(self, filename, tablename):
-        path = '../data/'+ tablename +'/'
+        path = 'data/'+ tablename +'/'
         filename = path + filename
         return cv2.imread(filename)
 
@@ -61,17 +66,13 @@ class Dataloader(object):
                 oneHot = binary.transform([label])
                 tup = (box, oneHot)
                 boxes.append(tup)
-            except Exception:
+            except Exception as ex:
+                # self.log.error('Grab Box Error: ', row['filename'])
+                # self.log.error(ex)
                 print('Grab Box Error: ', row['filename'])
                 continue
         return boxes
 
     def grab_box(self, width_val, top_val, left_val, height_val, raw, filename):
         box = raw[top_val:(height_val+top_val), left_val:(width_val+left_val)]
-        try:
-            box = cv2.resize(box,(128,128))
-            box = rgb2gray(box)
-        except Exception:
-            print('Resize Error: ', filename)
-            return
         return box
